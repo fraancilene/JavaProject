@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 import java.util.Arrays;
 
 @Configuration
-@Profile("test")
+//@Profile("test")
 public class Config implements CommandLineRunner {
 
     @Autowired
