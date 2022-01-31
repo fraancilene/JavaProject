@@ -39,9 +39,3 @@ public class UserController {
 
 
 }
-
-@Data
-@AllArgsConstructor
-class Test {
-    String nome;
-}
