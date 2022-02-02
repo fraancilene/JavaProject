@@ -1,8 +1,10 @@
 package com.jv.fcsilva.projectcrud.config;
 
+import com.jv.fcsilva.projectcrud.entity.Category;
 import com.jv.fcsilva.projectcrud.entity.Order;
 import com.jv.fcsilva.projectcrud.entity.User;
 import com.jv.fcsilva.projectcrud.entity.enums.OrderStatus;
+import com.jv.fcsilva.projectcrud.repository.CategoryRepository;
 import com.jv.fcsilva.projectcrud.repository.OrderRepository;
 import com.jv.fcsilva.projectcrud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,18 @@ public class Config implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+
 
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null, "Eletronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
         User u1 = new User(null, "Maria", "maria@gmail.com", "9888521", "123456");
         User u2 = new User(null, "Anne", "anne@gmail.com", "9877521", "125456");
         //User u3 = new User(null, "Joana", "anne@gmail.com", "9877521", "125456");
@@ -33,9 +44,13 @@ public class Config implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2022-01-20T13:54:07Z"),OrderStatus.WAITTING_PAYMENT, u2);
         Order o3 = new Order(null,Instant.parse("2022-01-20T13:54:07Z"), OrderStatus.WAITTING_PAYMENT, u1);
 
+
+
+
         // salvando no banco de dados
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 
     }
 }
