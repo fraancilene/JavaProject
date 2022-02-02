@@ -1,9 +1,9 @@
 package com.jv.fcsilva.projectcrud.controller;
 
+import com.jv.fcsilva.projectcrud.entity.Product;
 import com.jv.fcsilva.projectcrud.entity.User;
+import com.jv.fcsilva.projectcrud.service.ProductService;
 import com.jv.fcsilva.projectcrud.service.UserService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserController {
+@RequestMapping(value = "/products")
+public class ProductController {
 
     @Autowired
-    private UserService userService;
+    private ProductService productService;
 
 
     // acessando os usuários
     @GetMapping
-    public ResponseEntity<List<User>> handle(){
-        List<User> list = userService.findAll();
+    public ResponseEntity<List<Product>> handle(){
+        List<Product> list = productService.findAll();
         System.out.println(list);
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public User findById(@PathVariable Long id){
-        User obj = userService.findById(id);
+    public Product findById(@PathVariable Long id){
+        Product obj = productService.findById(id);
         return obj;
 
 //        return new Test("tes");

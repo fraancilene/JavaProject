@@ -19,6 +19,7 @@ public class User{
     private String phone;
     private String password;
 
+    // relacionamento
     @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();

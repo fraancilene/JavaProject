@@ -2,10 +2,12 @@ package com.jv.fcsilva.projectcrud.config;
 
 import com.jv.fcsilva.projectcrud.entity.Category;
 import com.jv.fcsilva.projectcrud.entity.Order;
+import com.jv.fcsilva.projectcrud.entity.Product;
 import com.jv.fcsilva.projectcrud.entity.User;
 import com.jv.fcsilva.projectcrud.entity.enums.OrderStatus;
 import com.jv.fcsilva.projectcrud.repository.CategoryRepository;
 import com.jv.fcsilva.projectcrud.repository.OrderRepository;
+import com.jv.fcsilva.projectcrud.repository.ProductRepository;
 import com.jv.fcsilva.projectcrud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,9 @@ public class Config implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
 
     @Override
@@ -44,6 +49,11 @@ public class Config implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2022-01-20T13:54:07Z"),OrderStatus.WAITTING_PAYMENT, u2);
         Order o3 = new Order(null,Instant.parse("2022-01-20T13:54:07Z"), OrderStatus.WAITTING_PAYMENT, u1);
 
+        Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur", 90.5, "");
+        Product p2 = new Product(null,"Smart TV","Nulle eu imperdiet. Maecenas ante.", 2190.0, "");
+        Product p3 = new Product(null,"Macbook Pro", "Lorem ipsum dolor sit amet, consectetur", 1250.0, "");
+        Product p4 = new Product(null,"PC Gamer", "Nulle eu imperdiet. Maecenas ante.", 1200.0, "");
+        Product p5 = new Product(null,"Rails for Dumies", "Lorem ipsum dolor sit amet, consectetur", 100.99, "");
 
 
 
@@ -51,6 +61,7 @@ public class Config implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
     }
 }

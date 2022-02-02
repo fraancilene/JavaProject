@@ -3,6 +3,8 @@ package com.jv.fcsilva.projectcrud.entity;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @EqualsAndHashCode
 @Entity
@@ -13,6 +15,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Transient // impede que o jpa interprete
+    private Set<Product> products = new HashSet<>();
+
 
     public Category() {
     }
@@ -39,8 +45,7 @@ public class Category {
         this.name = name;
     }
 
-
-
-
-
+    public Set<Product> getProducts() {
+        return products;
+    }
 }
