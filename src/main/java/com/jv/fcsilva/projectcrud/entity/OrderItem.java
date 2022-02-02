@@ -1,13 +1,12 @@
 package com.jv.fcsilva.projectcrud.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jv.fcsilva.projectcrud.entity.pk.OrderItemPK;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 //@SuppressWarnings("JpaAttributeTypeInspection")
 @Entity
@@ -16,7 +15,8 @@ import java.io.Serializable;
 public class OrderItem {
 
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
+
     private Integer quantity;
     private Double price;
 
@@ -35,6 +35,7 @@ public class OrderItem {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder(){
        return id.getOrder();
     }

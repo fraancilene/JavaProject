@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@EqualsAndHashCode
 @Table(name = "tb_product")
 public class Product {
 
