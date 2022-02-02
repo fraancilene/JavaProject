@@ -43,7 +43,6 @@ public class Config implements CommandLineRunner {
 
         User u1 = new User(null, "Maria", "maria@gmail.com", "9888521", "123456");
         User u2 = new User(null, "Anne", "anne@gmail.com", "9877521", "125456");
-        //User u3 = new User(null, "Joana", "anne@gmail.com", "9877521", "125456");
 
         Order o1 = new Order(null,Instant.parse("2022-01-20T13:54:07Z"), OrderStatus.PAID, u1);
         Order o2 = new Order(null, Instant.parse("2022-01-20T13:54:07Z"),OrderStatus.WAITTING_PAYMENT, u2);
@@ -62,6 +61,19 @@ public class Config implements CommandLineRunner {
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+        // associando os produtos as suas categorias
+        p1.getCategories().add(cat2);
+        p2.getCategories().add(cat1);
+        p2.getCategories().add(cat3);
+        p3.getCategories().add(cat3);
+        p4.getCategories().add(cat3);
+        p5.getCategories().add(cat2);
+
+        // salvando as associações
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+
 
     }
 }

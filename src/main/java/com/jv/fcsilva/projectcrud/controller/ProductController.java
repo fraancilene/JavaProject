@@ -34,8 +34,6 @@ public class ProductController {
         Product obj = productService.findById(id);
         return obj;
 
-//        return new Test("tes");
-
     }
 
 

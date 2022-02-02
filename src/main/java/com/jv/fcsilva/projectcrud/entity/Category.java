@@ -1,5 +1,6 @@
 package com.jv.fcsilva.projectcrud.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
@@ -16,7 +17,9 @@ public class Category {
     private Long id;
     private String name;
 
-    @Transient // impede que o jpa interprete
+    //@Transient // impede que o jpa interprete
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
 
