@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jv.fcsilva.projectcrud.entity.pk.OrderItemPK;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,9 +14,10 @@ import javax.persistence.Table;
 @Entity
 @EqualsAndHashCode
 @Table(name = "tb_order_item")
-public class OrderItem {
+public class OrderItem implements Serializable{
+	private static final long serialVersionUID = 1L;
 
-    @EmbeddedId
+	@EmbeddedId
     private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;

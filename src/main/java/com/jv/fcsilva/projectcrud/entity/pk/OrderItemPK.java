@@ -1,5 +1,6 @@
 package com.jv.fcsilva.projectcrud.entity.pk;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jv.fcsilva.projectcrud.entity.Order;
 import com.jv.fcsilva.projectcrud.entity.Product;
 import lombok.EqualsAndHashCode;
@@ -23,6 +24,8 @@ public class OrderItemPK implements Serializable {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    
+    @JsonIgnore
     public Order getOrder() {
         return order;
     }

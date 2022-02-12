@@ -1,6 +1,8 @@
 package com.jv.fcsilva.projectcrud.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jv.fcsilva.projectcrud.entity.enums.OrderStatus;
 import javax.persistence.*;
 import java.time.Instant;
@@ -71,7 +73,8 @@ public class Order {
     public void setClient(User client) {
         this.client = client;
     }
-
+    
+  
     public Set<OrderItem> getItems() {
         return items;
     }
